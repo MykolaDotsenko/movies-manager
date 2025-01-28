@@ -1,0 +1,22 @@
+@if (!movies) {
+  <div>
+    <img src="loading.gif" alt="loading" />
+  </div>
+  } @else if (movies.length === 0) {
+  <div>
+    <p>No movies to display</p>
+  </div>
+  } @else { @for (movie of movies; track $index) {
+  <div class="movie-container">
+    <div>
+      <img [src]="movie.poster" width="169" height="250" />
+    </div>
+    <div>
+      <div>
+        {{ $index + 1 }} ) Movie: <b>{{ movie.title | uppercase }}</b>
+      </div>
+      <div>ReleaseDate: {{ movie.releaseDate | date : "dd/MM/yyyy" }}</div>
+      <div>Price: {{ movie.price | currency : "EUR" }}</div>
+    </div>
+  </div>
+  } }
