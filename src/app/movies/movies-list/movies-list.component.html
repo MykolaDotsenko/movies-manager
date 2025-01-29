@@ -1,22 +1,32 @@
+<button (click)="addMovie()">Add a movie</button>
+
 @if (!movies) {
+<div>
+  <img src="loading.gif" alt="loading" />
+</div>
+} @else if (movies.length === 0) {
+<div>
+  <p>No movies to display</p>
+</div>
+} @else { @for (movie of movies; track $index) {
+<div class="movie-container">
   <div>
-    <img src="loading.gif" alt="loading" />
+    @if(movie.poster){
+
+    <img [src]="movie.poster" width="169" height="250" />
+    } @else {
+    <img src="default.jpg" width="169" height="250" />
+    }
   </div>
-  } @else if (movies.length === 0) {
   <div>
-    <p>No movies to display</p>
-  </div>
-  } @else { @for (movie of movies; track $index) {
-  <div class="movie-container">
     <div>
-      <img [src]="movie.poster" width="169" height="250" />
+      {{ $index + 1 }} ) Movie: <b>{{ movie.title | uppercase }}</b>
     </div>
     <div>
-      <div>
-        {{ $index + 1 }} ) Movie: <b>{{ movie.title | uppercase }}</b>
-      </div>
-      <div>ReleaseDate: {{ movie.releaseDate | date : "dd/MM/yyyy" }}</div>
-      <div>Price: {{ movie.price | currency : "EUR" }}</div>
+      ReleaseDate: {{ movie.releaseDate | date : "dd/MM/yyyy" | uppercase }}
     </div>
+    <div>Price: {{ movie.price | currency : "EUR" }}</div>
+    <div><button (click)="removeMovie(movie)">Remove</button></div>
   </div>
-  } }
+</div>
+} }

@@ -5,13 +5,22 @@ import { Component, Input } from '@angular/core';
   selector: 'app-movies-list',
   imports: [DatePipe, UpperCasePipe, CurrencyPipe],
   templateUrl: './movies-list.component.html',
-  styleUrl: './movies-list.component.css'
+  styleUrl: './movies-list.component.css',
 })
 export class MoviesListComponent {
+  @Input({ required: true })
+  movies!: any[];
 
-@Input({ required: true })
+  addMovie() {
+    this.movies?.push({
+      title: 'Inception',
+      releaseDate: new Date('2012-07-03'),
+      price: 500,
+    });
+  }
 
-  movies?: any[];
-
-  
+  removeMovie(movie: any) {
+    let index = this.movies.findIndex((m:any) => m.title === movie.title);
+    this.movies.splice(index, 1);
+  }
 }
