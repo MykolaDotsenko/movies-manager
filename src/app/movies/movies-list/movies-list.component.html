@@ -26,7 +26,7 @@
       ReleaseDate: {{ movie.releaseDate | date : "dd/MM/yyyy" | uppercase }}
     </div>
     <div>Price: {{ movie.price | currency : "EUR" }}</div>
-    <div><button (click)="removeMovie(movie)">Remove</button></div>
+    <div><button (click)="removeMovie(movie)">Remove movie</button></div>
   </div>
 </div>
 } }
