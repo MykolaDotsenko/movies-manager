@@ -8,11 +8,12 @@ import {
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MoviesListComponent } from './movies/movies-list/movies-list.component';
+import { MenuComponent } from "./shared/components/menu/menu.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MoviesListComponent],
+  imports: [MoviesListComponent, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
