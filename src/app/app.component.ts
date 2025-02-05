@@ -21,6 +21,7 @@ import { RatingComponent } from "./shared/components/rating/rating.component";
 export class AppComponent {
   upcomingReleasesMovies: any;
   inTheatersMovies: any;
+  title: any;
 
   constructor() {
     setTimeout(() => {
