@@ -14,7 +14,7 @@ import { RatingComponent } from "./shared/components/rating/rating.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MoviesListComponent, MenuComponent, RatingComponent, RouterOutlet],
+  imports: [MoviesListComponent, MenuComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
