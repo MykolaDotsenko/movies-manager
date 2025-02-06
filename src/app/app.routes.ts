@@ -30,4 +30,6 @@ export const routes: Routes = [
   {path: 'movies/create', component: CreateMovieComponent},
   {path: 'movies/edit/:id', component: EditMovieComponent},
 
+  {path: '**', redirectTo: ''}
+
 ];
