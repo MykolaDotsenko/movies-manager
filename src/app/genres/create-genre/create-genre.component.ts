@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { firstLetterShoudBeUppercase } from '../../shared/functions/validations';
 
 @Component({
   selector: 'app-create-genre',
@@ -17,7 +18,7 @@ router = inject(Router)
 private formBuilder = inject(FormBuilder);
 
 form = this.formBuilder.group({
-  name: ['', {validators: [Validators.required]}]
+  name: ['', {validators: [Validators.required, firstLetterShoudBeUppercase()]}]
 });
 
 getErrorMessagesForName(): string {
@@ -25,6 +26,11 @@ getErrorMessagesForName(): string {
   if (field?.hasError('required')) {
     return 'Name is required';
   }
+
+  if (field?.hasError('firstLetterShoudBeUppercase')) {
+    return field.getError('firstLetterShoudBeUppercase').message;
+  }
+  
   return '';
 }
 
