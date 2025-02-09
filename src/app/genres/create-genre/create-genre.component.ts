@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-create-genre',
-  imports: [MatButtonModule, ReactiveFormsModule],
+  imports: [MatButtonModule, ReactiveFormsModule, MatFormFieldModule,  MatInputModule, RouterLink],
   templateUrl: './create-genre.component.html',
   styleUrl: './create-genre.component.css'
 })
@@ -20,6 +22,7 @@ form = this.formBuilder.group({
 
 saveChanges() {
 // ..save changes
+console.log(this.form.value);
 
 this.router.navigate(['/genres'])
 
