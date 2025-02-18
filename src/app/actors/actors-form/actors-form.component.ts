@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import moment from 'moment';
+import { dateCannotBeInTheFuture } from '../../shared/functions/validations';
 
 @Component({
   selector: 'app-actors-form',
@@ -38,7 +39,7 @@ export class ActorsFormComponent implements OnInit {
 
   form = this.formBuilder.group({
     name: ['', { validators: [Validators.required] }],
-    dateOfBirth: new FormControl<Date | null>(null),
+    dateOfBirth: new FormControl<Date | null>(null, {validators: [Validators.required, dateCannotBeInTheFuture()]}),
   });
 
   @Input()
@@ -62,6 +63,21 @@ export class ActorsFormComponent implements OnInit {
 
     return '';
   }
+
+  getErrorMessagesForDateOfBirth(): string {
+    let field = this.form.controls.dateOfBirth;
+
+    if (field.hasError('required')) {
+      return 'The date of birth field is required';
+    }
+
+    if (field.hasError('dateCannotBeInTheFuture')) {
+      return field.getError('dateCannotBeInTheFuture').message;
+    }
+
+    return '';
+  }
+
 
   saveChanges() {
     const actor = this.form.value as ActorCreationDTO;
