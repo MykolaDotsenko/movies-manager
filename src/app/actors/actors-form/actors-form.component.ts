@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import moment from 'moment';
 import { dateCannotBeInTheFuture } from '../../shared/functions/validations';
+import { InputImgComponent } from "../../shared/components/input-img/input-img.component";
 
 @Component({
   selector: 'app-actors-form',
@@ -30,7 +31,8 @@ import { dateCannotBeInTheFuture } from '../../shared/functions/validations';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-  ],
+    InputImgComponent
+],
   templateUrl: './actors-form.component.html',
   styleUrl: './actors-form.component.css',
 })
@@ -40,13 +42,14 @@ export class ActorsFormComponent implements OnInit {
   form = this.formBuilder.group({
     name: ['', { validators: [Validators.required] }],
     dateOfBirth: new FormControl<Date | null>(null, {validators: [Validators.required, dateCannotBeInTheFuture()]}),
+    picture: new FormControl<null | File | string>(null),
   });
 
   @Input()
   model?: ActorDTO;
 
   @Output()
-  postForm = new EventEmitter<ActorDTO>();
+  postForm = new EventEmitter<ActorCreationDTO>();
 
   ngOnInit(): void {
     if (this.model !== undefined) {
@@ -79,10 +82,17 @@ export class ActorsFormComponent implements OnInit {
   }
 
 
+handleFileSelection(file: File) {
+  this.form.controls.picture.setValue(file)}
+
   saveChanges() {
     const actor = this.form.value as ActorCreationDTO;
 
     actor.dateOfBirth = moment(actor.dateOfBirth).toDate();
+
+    if (typeof actor.picture === 'string') {
+      actor.picture = undefined;
+    }
 
     this.postForm.emit(actor);
   }
