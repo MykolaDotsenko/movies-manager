@@ -12,7 +12,7 @@ export class EditTheaterComponent {
   @Input({ transform: numberAttribute })
   id!: number;
 
-  model: TheaterDTO = { name: 'Acropolis', id: 1 };
+  model: TheaterDTO = { name: 'Acropolis', id: 1, latitude: 37.976663, longitude: 23.728308 };
 
   saveChanges(theater: TheaterCreationDTO) {
     console.log('editing theater', theater);
