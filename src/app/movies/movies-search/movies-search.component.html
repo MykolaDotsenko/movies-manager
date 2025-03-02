@@ -17,17 +17,21 @@
     </mat-select>
   </mat-form-field>
 
-
   <div>
-    <mat-checkbox [formControl]="form.controls.upcomingReleases">Upcoming Releases</mat-checkbox>
+    <mat-checkbox [formControl]="form.controls.upcomingReleases"
+      >Upcoming Releases</mat-checkbox
+    >
   </div>
 
   <div>
-    <mat-checkbox [formControl]="form.controls.inTheaters">In Theaters</mat-checkbox>
+    <mat-checkbox [formControl]="form.controls.inTheaters"
+      >In Theaters</mat-checkbox
+    >
   </div>
 
-<div class="container-clear">
-  <button mat-flat-button (click)="clear()" color="red">Clear</button>
-</div>
-
+  <div class="container-clear">
+    <button mat-flat-button (click)="clear()" color="red">Clear</button>
+  </div>
 </form>
+
+<app-movies-list [movies]="movies"> </app-movies-list>
