@@ -1,6 +1,7 @@
 import { Component, Input, numberAttribute } from '@angular/core';
 import { MovieCreationDTO, MovieDTO } from '../movies.models';
-import { MoviesFormComponent } from "../movies-form/movies-form.component";
+import { MoviesFormComponent } from '../movies-form/movies-form.component';
+import { MultipleSelectorDTO } from '../../shared/components/multiple-sector/MultipleSelectorDTO';
 
 @Component({
   selector: 'app-edit-movie',
@@ -20,6 +21,14 @@ export class EditMovieComponent {
     poster:
       'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTcwNTU5OTUyNw@@._V1_FMjpg_UX1000_.jpg',
   };
+
+  nonSelectedGenres: MultipleSelectorDTO[] = [
+    { key: 1, description: 'Drama' },
+
+    { key: 3, description: 'Comedy' },
+  ];
+
+  selectedGenres: MultipleSelectorDTO[] = [{ key: 2, description: 'Action' }];
 
   saveChanges(movie: MovieCreationDTO) {
     console.log('Editing the movie', movie);

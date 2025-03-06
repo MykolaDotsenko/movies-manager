@@ -28,6 +28,9 @@
   ></app-input-img>
 
 
+  <h4>Select the Genres</h4>
+  <app-multiple-sector [selected]="selectedGenres" [nonSelected]="nonSelectedGenres" ></app-multiple-sector>
+
   <div class="buttons-container">
     <button [disabled]="form.invalid" mat-flat-button type="submit">Save changes</button>
     <a routerLink="/" mat-stroked-button>Cancel</a>
