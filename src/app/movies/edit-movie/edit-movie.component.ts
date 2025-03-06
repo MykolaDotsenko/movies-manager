@@ -1,9 +1,10 @@
 import { Component, Input, numberAttribute } from '@angular/core';
 import { MovieCreationDTO, MovieDTO } from '../movies.models';
+import { MoviesFormComponent } from "../movies-form/movies-form.component";
 
 @Component({
   selector: 'app-edit-movie',
-  imports: [],
+  imports: [MoviesFormComponent],
   templateUrl: './edit-movie.component.html',
   styleUrl: './edit-movie.component.css',
 })

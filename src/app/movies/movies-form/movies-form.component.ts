@@ -79,6 +79,10 @@ export class MoviesFormComponent implements OnInit {
       movie.releaseDate = moment(movie.releaseDate).toDate();
     }
 
+    if(typeof movie.poster === 'string'){
+      movie.poster = undefined;
+    }
+
     this.postForm.emit(movie);
   }
 }
