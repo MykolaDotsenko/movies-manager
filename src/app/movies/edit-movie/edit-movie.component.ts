@@ -19,7 +19,7 @@ export class EditMovieComponent {
     releaseDate: new Date('2018-07-22'),
     trailer: 'abcd',
     poster:
-      'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTcwNTU5OTUyNw@@._V1_FMjpg_UX1000_.jpg',
+      'https://upload.wikimedia.org/wikipedia/en/b/b4/Spider-Man-_Across_the_Spider-Verse_poster.jpg',
   };
 
   nonSelectedGenres: MultipleSelectorDTO[] = [
@@ -29,6 +29,14 @@ export class EditMovieComponent {
   ];
 
   selectedGenres: MultipleSelectorDTO[] = [{ key: 2, description: 'Action' }];
+
+  nonSelectedTheaters: MultipleSelectorDTO[] = [
+    { key: 1, description: 'Acropolis' }
+  ];
+
+  selectedTheaters: MultipleSelectorDTO[] = [
+    { key: 2, description: 'Agora Mall' }
+  ];
 
   saveChanges(movie: MovieCreationDTO) {
     console.log('Editing the movie', movie);

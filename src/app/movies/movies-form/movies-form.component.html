@@ -31,6 +31,9 @@
   <h4>Select the Genres</h4>
   <app-multiple-sector [selected]="selectedGenres" [nonSelected]="nonSelectedGenres" ></app-multiple-sector>
 
+  <h4>Select the Theaters</h4>
+  <app-multiple-sector [selected]="selectedTheaters" [nonSelected]="nonSelectedTheaters" ></app-multiple-sector>
+
   <div class="buttons-container">
     <button [disabled]="form.invalid" mat-flat-button type="submit">Save changes</button>
     <a routerLink="/" mat-stroked-button>Cancel</a>
