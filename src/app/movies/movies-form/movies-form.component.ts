@@ -20,22 +20,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InputImgComponent } from '../../shared/components/input-img/input-img.component';
-import { MultipleSectorComponent } from "../../shared/components/multiple-sector/multiple-sector.component";
+import { MultipleSectorComponent } from '../../shared/components/multiple-sector/multiple-sector.component';
 import { MultipleSelectorDTO } from '../../shared/components/multiple-sector/MultipleSelectorDTO';
+import { ActorsAutocompleteComponent } from '../../actors/actors-autocomplete/actors-autocomplete.component';
 
 @Component({
   selector: 'app-movies-form',
   imports: [
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
     MatButtonModule,
     RouterLink,
-    MatFormFieldModule,
-    MatInputModule,
     MatDatepickerModule,
     InputImgComponent,
-    MultipleSectorComponent
-],
+    MultipleSectorComponent,
+    ActorsAutocompleteComponent
+  ],
   templateUrl: './movies-form.component.html',
   styleUrl: './movies-form.component.css',
 })
@@ -46,17 +47,17 @@ export class MoviesFormComponent implements OnInit {
   @Output()
   postForm = new EventEmitter<MovieCreationDTO>();
 
-@Input({ required: true })
-selectedGenres!: MultipleSelectorDTO[];
+  @Input({ required: true })
+  selectedGenres!: MultipleSelectorDTO[];
 
-@Input({ required: true })
-nonSelectedGenres!: MultipleSelectorDTO[];
+  @Input({ required: true })
+  nonSelectedGenres!: MultipleSelectorDTO[];
 
-@Input({ required: true })
-selectedTheaters!: MultipleSelectorDTO[];
+  @Input({ required: true })
+  selectedTheaters!: MultipleSelectorDTO[];
 
-@Input({ required: true })
-nonSelectedTheaters!: MultipleSelectorDTO[];
+  @Input({ required: true })
+  nonSelectedTheaters!: MultipleSelectorDTO[];
 
   private formBuilder = inject(FormBuilder);
   form = this.formBuilder.group({
@@ -94,14 +95,14 @@ nonSelectedTheaters!: MultipleSelectorDTO[];
       movie.releaseDate = moment(movie.releaseDate).toDate();
     }
 
-    if(typeof movie.poster === 'string'){
+    if (typeof movie.poster === 'string') {
       movie.poster = undefined;
     }
 
-    const genresIds = this.selectedGenres.map(val => val.key);
+    const genresIds = this.selectedGenres.map((val) => val.key);
     movie.genresIds = genresIds;
 
-    const theatersIds = this.selectedTheaters.map(val => val.key);
+    const theatersIds = this.selectedTheaters.map((val) => val.key);
     movie.theatersIds = theatersIds;
 
     this.postForm.emit(movie);

@@ -5,6 +5,7 @@ import { MultipleSelectorDTO } from '../../shared/components/multiple-sector/Mul
 
 @Component({
   selector: 'app-create-movie',
+  standalone: true,
   imports: [MoviesFormComponent],
   templateUrl: './create-movie.component.html',
   styleUrl: './create-movie.component.css'
