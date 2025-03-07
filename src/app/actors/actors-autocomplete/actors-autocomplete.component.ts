@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActorAutoCompleteDTO } from '../actors.models';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -58,7 +58,9 @@ export class ActorsAutocompleteComponent implements OnInit {
 
   actorsOriginal = this.actors;
 
-  actorsSelected: ActorAutoCompleteDTO[] = [];
+  @Input({ required: true })
+
+  selectedActors: ActorAutoCompleteDTO[] = [];
 
   control = new FormControl();
 
@@ -77,7 +79,7 @@ export class ActorsAutocompleteComponent implements OnInit {
   }
 
   handleSelection(event: MatAutocompleteSelectedEvent) {
-    this.actorsSelected.push(event.option.value);
+    this.selectedActors.push(event.option.value);
     this.control.patchValue('');
     if (this.table !== undefined) {
       this.table.renderRows();
@@ -85,18 +87,18 @@ export class ActorsAutocompleteComponent implements OnInit {
   }
 
   delete(actor: ActorAutoCompleteDTO) {
-    const index = this.actorsSelected.findIndex(
+    const index = this.selectedActors.findIndex(
       (a: ActorAutoCompleteDTO) => a.id === actor.id
     );
-    this.actorsSelected.splice(index, 1);
+    this.selectedActors.splice(index, 1);
     this.table.renderRows();
   }
 
   handleDrop(event: CdkDragDrop<any[]>) {
-    const previousIndex = this.actorsSelected.findIndex(
+    const previousIndex = this.selectedActors.findIndex(
       (actor) => actor === event.item.data
     );
-    moveItemInArray(this.actorsSelected, previousIndex, event.currentIndex);
+    moveItemInArray(this.selectedActors, previousIndex, event.currentIndex);
     this.table.renderRows();
   }
 }

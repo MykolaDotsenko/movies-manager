@@ -2,6 +2,7 @@ import { Component, Input, numberAttribute } from '@angular/core';
 import { MovieCreationDTO, MovieDTO } from '../movies.models';
 import { MoviesFormComponent } from '../movies-form/movies-form.component';
 import { MultipleSelectorDTO } from '../../shared/components/multiple-sector/MultipleSelectorDTO';
+import { ActorAutoCompleteDTO } from '../../actors/actors.models';
 
 @Component({
   selector: 'app-edit-movie',
@@ -37,6 +38,17 @@ export class EditMovieComponent {
   selectedTheaters: MultipleSelectorDTO[] = [
     { key: 2, description: 'Agora Mall' }
   ];
+
+selectedActors: ActorAutoCompleteDTO[] = [
+    {
+      id: 2,
+      name: 'Tom Hanks',
+      character: 'Forrest Gump',
+      picture:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Tom_Hanks_TIFF_2019.jpg/220px-Tom_Hanks_TIFF_2019.jpg',
+    },
+  ]
+
 
   saveChanges(movie: MovieCreationDTO) {
     console.log('Editing the movie', movie);
