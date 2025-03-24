@@ -16,7 +16,8 @@ genresService = inject(GenresService);
 genres : GenreDTO[] = [];
 
 constructor() {
-  const genres = this.genresService.getAll();
-  this.genres = genres;
+  this.genresService.getAll().subscribe(genres => {
+    this.genres = genres;
+  });
 }
 }
