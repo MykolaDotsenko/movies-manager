@@ -6,22 +6,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { firstLetterShoudBeUppercase } from '../../shared/functions/validations';
 import { GenreCreationDTO } from '../genres.models';
-import { GenresFormComponent } from "../genres-form/genres-form.component";
+import { GenresFormComponent } from '../genres-form/genres-form.component';
+import { GenresService } from '../genres.service';
 
 @Component({
   selector: 'app-create-genre',
   imports: [GenresFormComponent],
   templateUrl: './create-genre.component.html',
-  styleUrl: './create-genre.component.css'
+  styleUrl: './create-genre.component.css',
 })
 export class CreateGenreComponent {
+  router = inject(Router);
+  genresService = inject(GenresService);
 
-router = inject(Router)
-
-saveChanges(genre: GenreCreationDTO) {
-// ..save changes
-console.log(genre);
-this.router.navigate(['/genres'])
-
-}
+  saveChanges(genre: GenreCreationDTO) {
+    this.genresService.create(genre).subscribe(() => {
+      this.router.navigate(['/genres']);
+    });
+  }
 }
