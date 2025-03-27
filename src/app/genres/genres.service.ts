@@ -17,7 +17,7 @@ export class GenresService {
     return this.http.get<GenreDTO[]>(this.baseURL);
   }
 
-  public create(genre: GenreCreationDTO){
+  public create(genre: GenreCreationDTO) {
     return this.http.post(this.baseURL, genre);
   }
 }

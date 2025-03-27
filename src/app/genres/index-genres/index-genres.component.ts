@@ -10,15 +10,15 @@ import { environment } from '../../../environments/environment';
   selector: 'app-index-genres',
   imports: [RouterLink, MatIconModule, MatButtonModule],
   templateUrl: './index-genres.component.html',
-  styleUrl: './index-genres.component.css'
+  styleUrl: './index-genres.component.css',
 })
 export class IndexGenresComponent {
-genresService = inject(GenresService);
-genres : GenreDTO[] = [];
+  genresService = inject(GenresService);
+  genres: GenreDTO[] = [];
 
-constructor() {
-  this.genresService.getAll().subscribe(genres => {
-    this.genres = genres;
-  });
-}
+  constructor() {
+    this.genresService.getAll().subscribe((genres) => {
+      this.genres = genres;
+    });
+  }
 }
