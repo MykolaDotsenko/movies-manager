@@ -20,7 +20,15 @@ export class GenresService {
     return this.http.get<GenreDTO[]>(this.baseURL, {params: queryParams, observe: 'response'});
   }
 
+  public getById(id: number): Observable<GenreDTO> {
+    return this.http.get<GenreDTO>(`${this.baseURL}/${id}`);
+  }
+
   public create(genre: GenreCreationDTO) {
     return this.http.post(this.baseURL, genre);
+  }
+
+  public update(id: number, genre: GenreCreationDTO) {
+    return this.http.put(`${this.baseURL}/${id}`, genre);
   }
 }
