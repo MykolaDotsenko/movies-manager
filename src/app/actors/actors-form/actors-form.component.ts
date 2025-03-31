@@ -82,18 +82,16 @@ export class ActorsFormComponent implements OnInit {
   }
 
 
-handleFileSelection(file: File) {
-  this.form.controls.picture.setValue(file)}
+  handleFileSelection(file: File) {
+    console.log('Получен файл:', file);
+    this.form.controls.picture.setValue(file);
+  }
 
   saveChanges() {
     const actor = this.form.value as ActorCreationDTO;
-
     actor.dateOfBirth = moment(actor.dateOfBirth).toDate();
-
-    if (typeof actor.picture === 'string') {
-      actor.picture = undefined;
-    }
-
+    console.log('Отправляемые данные:', actor);
+    console.log('Picture тип:', actor.picture instanceof File ? 'File' : typeof actor.picture);
     this.postForm.emit(actor);
   }
 }

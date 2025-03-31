@@ -19,17 +19,13 @@ export class ActorsService {
 
   private buildFormData(actor: ActorCreationDTO): FormData {
     const formData = new FormData();
-
     formData.append('name', actor.name);
-    formData.append(
-      'dateOfBirth',
-      actor.dateOfBirth.toISOString().split('T')[0]
-    );
-
-    if (actor.picture) {
-      formData.append('picture', actor.picture);
+    formData.append('dateOfBirth', actor.dateOfBirth.toISOString().split('T')[0]);
+    if (actor.picture instanceof File) {
+      formData.append('Picture', actor.picture, actor.picture.name); // Указываем имя файла
+    } else if (actor.picture) {
+      console.warn('Picture не является файлом:', actor.picture);
     }
-
     return formData;
   }
 }
