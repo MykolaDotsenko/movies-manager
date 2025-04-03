@@ -35,6 +35,12 @@ export class ActorsService {
     return this.http.post(this.baseURL, formData);
   }
 
+
+  public update (id: number, actor: ActorCreationDTO){
+    const formData = this.buildFormData(actor)
+    return this.http.put(`${this.baseURL}/${id}`, formData);
+  }
+
   private buildFormData(actor: ActorCreationDTO): FormData {
     const formData = new FormData();
     formData.append('name', actor.name);

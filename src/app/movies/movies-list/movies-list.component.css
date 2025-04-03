@@ -18,3 +18,9 @@ p {
 button {
   margin-left: 1rem;
 }
+
+button[mat-flat-button][color="warn"] {
+  background-color: #f44336 !important; /* Красный цвет */
+  color: white !important;
+}
+
