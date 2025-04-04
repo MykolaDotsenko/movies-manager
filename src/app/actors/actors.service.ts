@@ -6,11 +6,12 @@ import { Platform } from '@angular/cdk/platform';
 import { Observable } from 'rxjs';
 import { PaginationDTO } from '../shared/models/PaginationDTO';
 import { buildQueryParams } from '../shared/functions/buildQueryParams';
+import { ICRUDService } from '../shared/interfaces/ICRUDService';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ActorsService {
+export class ActorsService implements ICRUDService<ActorDTO, ActorCreationDTO> {
   constructor() {}
 
   private http = inject(HttpClient);
