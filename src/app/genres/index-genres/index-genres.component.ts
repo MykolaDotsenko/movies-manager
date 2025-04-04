@@ -11,53 +11,19 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { PaginationDTO } from '../../shared/models/PaginationDTO';
 import { HttpResponse } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { CRUD_SERVICE_TOKEN } from '../../shared/providers/providers';
+import { IndexEntitiesComponent } from "../../shared/components/index-entities/index-entities.component";
 
 @Component({
   selector: 'app-index-genres',
-  imports: [
-    RouterLink,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    GenericListComponent,
-    MatPaginatorModule,
-    SweetAlert2Module
-  ],
+  standalone: true,
+  imports: [IndexEntitiesComponent],
   templateUrl: './index-genres.component.html',
   styleUrl: './index-genres.component.css',
+  providers: [
+    {provide: CRUD_SERVICE_TOKEN, useClass: GenresService}
+  ]
 })
 export class IndexGenresComponent {
-  genresService = inject(GenresService);
-  genres!: GenreDTO[];
-  columnsToDisplay = ['id', 'name', 'actions'];
-  pagination: PaginationDTO = { page: 1, recordsPerPage: 5 };
-  totalRecordsCount!: number;
 
-  constructor() {
-    this.loadReacords();
-  }
-
-  loadReacords() {
-    this.genresService
-      .getPaginated(this.pagination)
-      .subscribe((response: HttpResponse<GenreDTO[]>) => {
-        this.genres = response.body as GenreDTO[];
-        const header = response.headers.get('total-records-count') as string;
-        this.totalRecordsCount = parseInt(header, 10);
-      });
-  }
-
-  updatePagination(data: PageEvent) {
-    this.pagination = {
-      page: data.pageIndex + 1,
-      recordsPerPage: data.pageSize,
-    };
-    this.loadReacords();
-  }
-
-  delete(id: number) {
-    this.genresService.delete(id).subscribe(() => {
-      this.loadReacords();
-    });
-  }
 }
