@@ -55,4 +55,11 @@ export class IndexActorsComponent {
     };
     this.loadRecords();
   }
+
+
+  delete(id: number) {
+    this.actorsService.delete(id).subscribe(() => {
+        this.loadRecords();
+      });
+  }
 }
