@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { MovieCreationDTO, MoviesPostGetDTO } from './movies.models';
+import { LandingDTO, MovieCreationDTO, MoviesPostGetDTO } from './movies.models';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,12 @@ export class MoviesService {
     return this.http.get<MoviesPostGetDTO>(`${this.baseURL}/postget`);
 
   }
+
+
+public getLanding() : Observable<LandingDTO>{
+  return this.http.get<LandingDTO>(`${this.baseURL}/landing`);
+}
+
 
   public create(movie: MovieCreationDTO) {
     const formData = this.buildFormData(movie);
