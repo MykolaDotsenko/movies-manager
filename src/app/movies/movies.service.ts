@@ -39,6 +39,10 @@ public update(id: number, movie: MovieCreationDTO){
   return this.http.put(`${this.baseURL}/${id}`, formData);
 }
 
+public delete(id: number){
+  return this.http.delete(`${this.baseURL}/${id}`);
+}
+
 
 private buildFormData(movie: MovieCreationDTO) : FormData {
   const formData = new FormData();

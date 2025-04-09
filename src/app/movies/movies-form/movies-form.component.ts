@@ -93,6 +93,17 @@ export class MoviesFormComponent implements OnInit {
   }
 
   saveChanges() {
+    if (this.form.invalid) {
+      console.log('Форма невалидна:', this.form.value);
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    // Проверяем, что у всех актеров заполнено поле character
+    if (this.selectedActors.some(actor => !actor.character || actor.character.trim() === '')) {
+      alert('Please fill in the Character field for all selected actors.');
+      return;
+    }
     const movie = this.form.value as MovieCreationDTO;
 
     if (movie.releaseDate) {
