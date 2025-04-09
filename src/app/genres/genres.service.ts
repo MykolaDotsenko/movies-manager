@@ -25,6 +25,13 @@ export class GenresService implements ICRUDService<GenreDTO, GenreCreationDTO> {
     return this.http.get<GenreDTO>(`${this.baseURL}/${id}`);
   }
 
+
+  public getAll(): Observable<GenreDTO[]> {
+    return this.http.get<GenreDTO[]>(`${this.baseURL}/all`);
+  }
+
+
+
   public create(genre: GenreCreationDTO) {
     return this.http.post(this.baseURL, genre);
   }
