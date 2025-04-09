@@ -15,6 +15,7 @@ import { MovieDTO } from '../movies.models';
 import { MoviesService } from '../movies.service';
 import { PaginationDTO } from '../../shared/models/PaginationDTO';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-movies-search',
@@ -27,7 +28,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
     MatSelectModule,
     MatCheckboxModule,
     MoviesListComponent,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   templateUrl: './movies-search.component.html',
   styleUrl: './movies-search.component.css',
@@ -46,7 +47,7 @@ export class MoviesSearchComponent implements OnInit {
 
       this.readValuesFromURL();
       this.filterMovies(this.form.value as MoviesSearchDTO);
-      this.form.valueChanges.subscribe((values) => {
+      this.form.valueChanges.pipe(debounceTime(300)).subscribe((values) => {
         this.filterMovies(values as MoviesSearchDTO);
         this.writeParametersInTheURL();
       });
@@ -111,8 +112,11 @@ export class MoviesSearchComponent implements OnInit {
     });
   }
 
-  handlePagination(data: PageEvent){
-    this.pagination = {page: data.pageIndex + 1, recordsPerPage: data.pageSize};
+  handlePagination(data: PageEvent) {
+    this.pagination = {
+      page: data.pageIndex + 1,
+      recordsPerPage: data.pageSize,
+    };
     this.filterMovies(this.form.value as MoviesSearchDTO);
   }
 
