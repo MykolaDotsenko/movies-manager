@@ -11,10 +11,12 @@ import { LoadingComponent } from "../../shared/components/loading/loading.compon
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterLink } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Coordinate } from '../../shared/components/map/Coordinate.module';
+import { MapComponent } from "../../shared/components/map/map.component";
 
 @Component({
   selector: 'app-movie-details',
-  imports: [LoadingComponent, MatChipsModule, RouterLink],
+  imports: [LoadingComponent, MatChipsModule, RouterLink, MapComponent],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css',
 })
@@ -26,12 +28,19 @@ trailerURL!: SafeResourceUrl;
   sanitizer = inject(DomSanitizer);
 
   moviesService = inject(MoviesService);
+  coordinates: Coordinate[] = [];
 
   ngOnInit(): void {
   this.moviesService.getById(this.id).subscribe(movie => {
     this.movie = movie;
     movie.releaseDate = new Date(movie.releaseDate);
     this.trailerURL = this.transformYoutubeURLToEmbed(this.movie.trailer);
+    if(movie.theaters){
+      this.coordinates = movie.theaters.map(theater => {
+        return {latitude: theater.latitude, longitude: theater.longitude, text: theater.name}
+      });
+    }
+
   });
   }
 
