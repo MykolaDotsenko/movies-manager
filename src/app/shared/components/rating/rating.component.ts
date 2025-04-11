@@ -8,7 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './rating.component.html',
   styleUrl: './rating.component.css',
 })
-export class RatingComponent {
+export class RatingComponent implements OnInit {
+
   @Input({ required: true, transform: (value: number) => Array(value).fill(0) })
   maxRating!: any[];
 
@@ -19,6 +20,10 @@ export class RatingComponent {
   rated = new EventEmitter<number>();
 
   clickedRating = 0;
+
+  ngOnInit(): void {
+    this.clickedRating = this.selectedRating;
+  }
 
   handleMouseEnter(index: number) {
     this.selectedRating = index + 1;
