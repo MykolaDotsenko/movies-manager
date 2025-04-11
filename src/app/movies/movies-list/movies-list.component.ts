@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MoviesService } from '../movies.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AuthorizedComponent } from "../../security/authorized/authorized.component";
 
 @Component({
   selector: 'app-movies-list',
@@ -17,8 +18,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     MatButtonModule,
     MatIconModule,
     RouterLink,
-    SweetAlert2Module
-  ],
+    SweetAlert2Module,
+    AuthorizedComponent
+],
   templateUrl: './movies-list.component.html',
   styleUrl: './movies-list.component.css',
 })

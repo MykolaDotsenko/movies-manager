@@ -9,19 +9,23 @@
     <a mat-button routerLink="movies/search"> Search for Movies </a>
   </div>
 
-  <div>
-    <a mat-button routerLink="genres"> Genres </a>
-  </div>
+  <app-authorized role="admin">
+    <ng-container authorized>
+      <div>
+        <a mat-button routerLink="genres"> Genres </a>
+      </div>
 
-  <div>
-    <a mat-button routerLink="actors"> Actors </a>
-  </div>
+      <div>
+        <a mat-button routerLink="actors"> Actors </a>
+      </div>
 
-  <div>
-    <a mat-button routerLink="theaters"> Theaters </a>
-  </div>
+      <div>
+        <a mat-button routerLink="theaters"> Theaters </a>
+      </div>
 
-  <div>
-    <a mat-button routerLink="movies/create"> Create movie </a>
-  </div>
+      <div>
+        <a mat-button routerLink="movies/create"> Create movie </a>
+      </div>
+    </ng-container>
+  </app-authorized>
 </mat-toolbar>
