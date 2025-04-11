@@ -3,3 +3,6 @@ mat-chip-listbox {
   margin-bottom: 0.5rem;
 }
 
+app-rating{
+  vertical-align: middle;
+}
