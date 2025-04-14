@@ -1,6 +1,6 @@
 # Movies Manager
 
-Welcome to **Movies Manager**, a dynamic and user-friendly Angular frontend application designed to bring movie management to life! This single-page application (SPA) offers a seamless experience for browsing, managing, and visualizing movie data, paired with a modern UI and innovative features like interactive maps. Built with clean code and industry-standard practices, this project showcases my frontend development skills and passion for creating engaging user experiences—perfect for recruiters looking for a versatile developer!
+Welcome to **Movies Manager**, a dynamic and user-friendly Angular frontend application designed to bring movie management to life! This single-page application (SPA) offers a seamless experience for browsing, managing, and visualizing movie data, paired with a modern UI and innovative features like interactive maps.
 
 ## 🎥 Functionality
 
