@@ -1,0 +1,9 @@
+button {
+  margin-right: 1rem;
+}
+
+button[mat-flat-button][color="warn"] {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
