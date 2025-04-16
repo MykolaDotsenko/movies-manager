@@ -28,16 +28,16 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.layers = this.initialCoordinates.map((value) => {
+      const myMarker = marker(
+        [value.latitude, value.longitude],
+        this.markerOptions
+      );
 
+      if (value.text) {
+        myMarker.bindPopup(value.text, { autoClose: false, autoPan: false });
+      }
 
-      const myMarker = marker([value.latitude, value.longitude], this.markerOptions);
-
-if(value.text){
-
-  myMarker.bindPopup(value.text, {autoClose: false, autoPan: false})
-}
-
-      return myMarker
+      return myMarker;
     });
   }
 
@@ -53,23 +53,21 @@ if(value.text){
 
   options = {
     layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '...',
       }),
     ],
     zoom: 14,
-    center: latLng(18.52043, 73.856743),
+    center: latLng(60.1699, 24.9384),
   };
 
   layers: Marker<any>[] = [];
 
   handleClick(event: LeafletMouseEvent) {
-if (this.readOnlyMode) {
-return
-
-}
-
+    if (this.readOnlyMode) {
+      return;
+    }
 
     const latitude = event.latlng.lat;
     const longitude = event.latlng.lng;
