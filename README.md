@@ -52,24 +52,33 @@ This project demonstrates my ability to create engaging frontends that pair seam
 
 https://moviesapi20250415161440-ahfxgzdpb8e4dbgk.canadacentral-01.azurewebsites.net/swagger/index.html
 MoviesAPI provides a comprehensive backend for movie management with the following features:
+- **Movie CRUD Operations**: Create, read, update, and delete movies with details like title, release year, synopsis, and more.
+- **Genre Management**: Organize movies by genres for easy filtering and categorization.
+- **User Authentication**: Secure user registration and login using JWT for protected endpoints.
+- **Image Uploads**: Seamlessly upload and retrieve movie posters, integrated with cloud storage.
+- **Geospatial Queries**: Find movies by filming locations using spatial data, adding a unique interactive layer.
+- **Reviews System**: Allow users to submit and view movie reviews (optional feature).
 
-Movie CRUD Operations: Create, read, update, and delete movies with details like title, release year, synopsis, and more.
-Genre Management: Organize movies by genres for easy filtering and categorization.
-User Authentication: Secure user registration and login using JWT for protected endpoints.
-Image Uploads: Seamlessly upload and retrieve movie posters, integrated with cloud storage.
-Geospatial Queries: Find movies by filming locations using spatial data, adding a unique interactive layer.
-Reviews System: Allow users to submit and view movie reviews (optional feature).
-🛠️ Technologies Used
+## 🛠️ Technologies Used
+
 The project leverages cutting-edge tools and frameworks to ensure performance, scalability, and maintainability:
+- **ASP.NET Core 8**: A high-performance framework for building RESTful APIs with clean architecture.
+- **Entity Framework Core**: ORM for efficient database operations and migrations.
+- **SQL Server**: Reliable relational database for storing movie and user data.
+- **NetTopologySuite**: Enables geospatial queries for location-based features.
+- **Azure Blob Storage**: Scalable cloud storage for movie posters and assets.
+- **JWT Authentication**: Secures API endpoints with token-based authentication.
+- **Serilog**: Structured logging for monitoring and debugging.
+- **Swagger**: API documentation for easy testing and integration.
+- **xUnit & Moq**: Unit testing to ensure code reliability.
 
-ASP.NET Core 8: A high-performance framework for building RESTful APIs with clean architecture.
-Entity Framework Core: ORM for efficient database operations and migrations.
-SQL Server: Reliable relational database for storing movie and user data.
-NetTopologySuite: Enables geospatial queries for location-based features.
-Azure Blob Storage: Scalable cloud storage for movie posters and assets.
-JWT Authentication: Secures API endpoints with token-based authentication.
-Serilog: Structured logging for monitoring and debugging.
-Swagger: API documentation for easy testing and integration.
-xUnit & Moq: Unit testing to ensure code reliability.
-🧠 Implementation Logic
-The API follows a clean architecture approach, ensuring separation of concerns and maintainability:
+## 🧠 Implementation Logic
+
+The API follows a **clean architecture** approach, ensuring separation of concerns and maintainability:
+- **Controllers**: Handle HTTP requests and responses, keeping endpoints lightweight and focused.
+- **Services**: Encapsulate business logic, such as movie validation, genre association, and user management.
+- **Repositories**: Abstract database interactions, leveraging EF Core for CRUD operations and spatial queries.
+- **DTOs**: Use Data Transfer Objects to optimize data exchange and reduce over-fetching.
+- **Dependency Injection**: Enhances modularity and testability by injecting services and repositories.
+- **Middleware**: Implements authentication, error handling, and logging for a robust request pipeline.
+- **Cloud Integration**: Azure Blob Storage manages file uploads, ensuring scalability for high traffic.
