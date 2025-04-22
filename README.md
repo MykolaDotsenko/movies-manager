@@ -73,12 +73,3 @@ Swagger: API documentation for easy testing and integration.
 xUnit & Moq: Unit testing to ensure code reliability.
 🧠 Implementation Logic
 The API follows a clean architecture approach, ensuring separation of concerns and maintainability:
-
-Controllers: Handle HTTP requests and responses, keeping endpoints lightweight and focused.
-Services: Encapsulate business logic, such as movie validation, genre association, and user management.
-Repositories: Abstract database interactions, leveraging EF Core for CRUD operations and spatial queries.
-DTOs: Use Data Transfer Objects to optimize data exchange and reduce over-fetching.
-Dependency Injection: Enhances modularity and testability by injecting services and repositories.
-Middleware: Implements authentication, error handling, and logging for a robust request pipeline.
-Cloud Integration: Azure Blob Storage manages file uploads, ensuring scalability for high traffic.
-The geospatial feature, powered by NetTopologySuite, allows querying filming locations, adding a unique dimension to the API. Authentication is secured with JWT, protecting sensitive endpoints while maintaining a smooth user experience. The codebase is thoroughly tested with xUnit, ensuring reliability and ease of future enhancements.
